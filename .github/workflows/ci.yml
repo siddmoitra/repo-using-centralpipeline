@@ -4,28 +4,14 @@ on:
  push:
   branches:
    - main
- workflow_dispatch:
-  inputs:
-   repo-name:
-    description: 'Repository name to build and deploy'
-    required: true
-    type: string
-   branch:
-    description: 'Branch to deploy from'
-    required: true
-    type: string
-    default: 'main'
-   environment:
-    description: 'Environment for deployment'
-    required: true
-    type: string
-    default: 'dev'
+
+env:
+ BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
  call-workflow:
-  uses: sleighsoft/centralpipeline/.github/workflows/cisid.yml@main
+  uses: siddmoitra/centralpipeline/.github/workflows/ci.yml@main
   with:
-   repo-name: ${{ inputs.repo-name }}
-   branch: ${{ inputs.branch }}
-   environment: ${{ inputs.environment }}
+   repo-name: ${{ github.event.repository.name }}
+   branch: ${{ env.BRANCH_NAME }}
   secrets: inherit
