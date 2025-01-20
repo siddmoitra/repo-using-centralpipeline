@@ -23,7 +23,7 @@ on:
 
 jobs:
  call-workflow:
-  uses: sleighsoft/centralpipeline/.github/workflows/ci.yml@main
+  uses: sleighsoft/centralpipeline/.github/workflows/ci.yml@ci-sid
   with:
    repo-name: ${{ inputs.repo-name }}
    branch: ${{ inputs.branch }}
