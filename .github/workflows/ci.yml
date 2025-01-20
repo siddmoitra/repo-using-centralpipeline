@@ -8,9 +8,7 @@ on:
 jobs:
  call-workflow:
   uses: siddmoitra/centralpipeline/.github/workflows/ci.yml@main
-  env:
-   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
   with:
    repo-name: ${{ github.event.repository.name }}
-   branch: $BRANCH_NAME
+   branch: ${{ github.head_ref || github.ref_name }}
   secrets: inherit
