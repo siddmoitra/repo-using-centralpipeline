@@ -5,12 +5,11 @@ on:
   branches:
    - main
 
-env:
- BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
 jobs:
  call-workflow:
   uses: siddmoitra/centralpipeline/.github/workflows/ci.yml@main
+  env:
+   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
   with:
    repo-name: ${{ github.event.repository.name }}
    branch: ${{ env.BRANCH_NAME }}
