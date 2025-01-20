@@ -12,5 +12,5 @@ jobs:
    BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
   with:
    repo-name: ${{ github.event.repository.name }}
-   branch: ${{ env.BRANCH_NAME }}
+   branch: $BRANCH_NAME
   secrets: inherit
