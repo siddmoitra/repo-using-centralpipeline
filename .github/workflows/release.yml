@@ -1,0 +1,18 @@
+## This file holds the workflow dispatcher for the release workflow
+name: Trigger Release
+
+on:
+ workflow_dispatch:
+  inputs:
+   commit-sha:
+    description: "Commit SHA to tag and release"
+    required: true
+    type: string
+
+jobs:
+ call-workflow:
+  uses: siddmoitra/centralpipeline/.github/workflows/release.yml@main
+  with:
+   repo-name: ${{ github.event.repository.name }}
+   commit-sha: ${{ inputs.commit-sha }}
+  secrets: inherit
