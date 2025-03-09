@@ -2,17 +2,19 @@
 name: Trigger Release
 
 on:
- workflow_dispatch:
-  inputs:
-   commit-sha:
-    description: "Commit SHA to tag and release"
-    required: true
-    type: string
+ push:
+  branches:
+   - main
 
 jobs:
- call-workflow:
-  uses: siddmoitra/centralpipeline/.github/workflows/release.yml@main
-  with:
-   repo-name: ${{ github.event.repository.name }}
-   commit-sha: ${{ inputs.commit-sha }}
-  secrets: inherit
+ test-me:
+  name: Yulu
+  runs-on: ubuntu-latest
+  steps:
+   - name: Pretty Print GitHub Context
+     uses: actions/github-script@v6
+     with:
+       script: |
+         console.log('GitHub Context:')
+         console.log(JSON.stringify(github, null, 2))
+   
