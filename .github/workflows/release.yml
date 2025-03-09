@@ -2,9 +2,11 @@
 name: Trigger Release
 
 on:
- push:
+ pull_request:
+  types:
+   - closed
   branches:
-   - main
+   - release/**
 
 jobs:
  test-me:
