@@ -16,5 +16,5 @@ jobs:
      with:
        script: |
          console.log('GitHub Context:')
-         console.log(JSON.stringify(github, null, 2))
+         console.log(JSON.stringify(github.event, null, 2))
    
